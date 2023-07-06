@@ -3,8 +3,7 @@
 
 #include <Engine/Resources/Resources.hpp>
 #include <Engine/Core/Window.hpp>
-
-#include <entt/entt.hpp>
+#include <Engine/Scene/Scene.hpp>
 
 namespace Engine
 {
@@ -12,7 +11,7 @@ namespace Engine
 	{
 		Resources resources;
 		Window window;
-		entt::registry registry;
+		Scene scene;
 	};
 }
 

@@ -11,8 +11,9 @@ public:
     {
         Engine::ResourcesParser::LoadFromXMLFile("D:\\Git\\TheBattleOfArchers\\Assets\\Assets.xml", application->GetContext());
 
-        auto entity = application->GetContext().registry.create();
-        application->GetContext().registry.emplace<Engine::TextureComponent>(entity, "Test", application->GetContext());
+        auto& registry = application->GetContext().scene.GetRegistry();
+        auto entity = registry.create();
+        registry.emplace<Engine::TextureComponent>(entity, "Test", application->GetContext());
     }
 
     void OnDeinit(Engine::Application* application) override
