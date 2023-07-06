@@ -5,8 +5,6 @@
 
 #include "raylib.h"
 
-#include <optional>
-
 namespace Engine
 {
 	class ResourceTexture final : public IResource
@@ -22,11 +20,11 @@ namespace Engine
 		bool IsEmpty() const override;
 
 	public:
-		std::optional<Texture2D>& GetTexture() { return _texture; }
-		const std::optional<Texture2D>& GetTexture() const { return _texture; }
+		const Texture2D& GetTexture() const { return _texture; }
 
 	private:
-		std::optional<Texture2D> _texture;
+		Texture2D _texture;
+		bool _isEmpty = true;
 	};
 }
 

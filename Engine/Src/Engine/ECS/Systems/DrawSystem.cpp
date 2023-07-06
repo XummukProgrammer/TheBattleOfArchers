@@ -16,7 +16,7 @@ namespace Engine
                 {
                     if (texturePtr)
                     {
-                        DrawTexture(texturePtr->GetTexture().value(), 0, 0, WHITE);
+                        DrawTexture(texturePtr->GetTexture(), 0, 0, WHITE);
                     }
                 }
             });
