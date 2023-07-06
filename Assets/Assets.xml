@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Resources>
+	<Resource Id="Test" Type="Texture" Path="D:\Git\TheBattleOfArchers\Assets\Textures\raylib_logo.png" />
+</Resources>
