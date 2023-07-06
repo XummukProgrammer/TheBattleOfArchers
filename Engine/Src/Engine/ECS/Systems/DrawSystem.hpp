@@ -1,7 +1,7 @@
 ﻿#ifndef _ENGINE_DRAW_SYSTEM_HEADER_
 #define _ENGINE_DRAW_SYSTEM_HEADER_
 
-#include <entt/entt.hpp>
+#include <Engine/Core/Context.hpp>
 
 namespace Engine
 {
@@ -12,7 +12,7 @@ namespace Engine
 		//~DrawSystem() = default;
 
 	public:
-		static void Run(entt::registry& registry);
+		static void Run(Context& context);
 	};
 }
 

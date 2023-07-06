@@ -2,9 +2,9 @@
 
 namespace Engine
 {
-    TextureComponent::TextureComponent(std::string_view id, Resources& resources)
+    TextureComponent::TextureComponent(std::string_view id, Context& context)
     {
-        SetTextureByResources(id, resources);
+        SetTextureByResources(id, context.resources);
     }
 
     void TextureComponent::SetTextureByResources(std::string_view id, Resources& resources)

@@ -2,7 +2,7 @@
 #define _ENGINE_TEXTURE_COMPONENT_HEADER_
 
 #include <Engine/Resources/Types/ResourceTexture.hpp>
-#include <Engine/Resources/Resources.hpp>
+#include <Engine/Core/Context.hpp>
 
 #include <memory>
 
@@ -12,7 +12,7 @@ namespace Engine
 	{
 	public:
 		TextureComponent() = default;
-		TextureComponent(std::string_view id, Resources& resources);
+		TextureComponent(std::string_view id, Context& context);
 		~TextureComponent() = default;
 
 	public:

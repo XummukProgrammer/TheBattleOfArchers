@@ -6,9 +6,9 @@
 
 namespace Engine
 {
-    void DrawSystem::Run(entt::registry& registry)
+    void DrawSystem::Run(Context& context)
     {
-        auto view = registry.view<const TextureComponent>();
+        auto view = context.registry.view<const TextureComponent>();
         view.each([](entt::entity entity, const TextureComponent& textureComponent)
             {
                 if (auto texturePtr = textureComponent.GetTexture())

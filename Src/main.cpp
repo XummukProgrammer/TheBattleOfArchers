@@ -1,30 +1,29 @@
 ﻿#include <Engine/Engine.hpp>
 
-#include <entt/entt.hpp>
+class ApplicationDelegate final : public Engine::ApplicationDelegate
+{
+public:
+    ApplicationDelegate() = default;
+    ~ApplicationDelegate() = default;
+
+public:
+    void OnInit(Engine::Application* application) override
+    {
+        Engine::ResourcesParser::LoadFromXMLFile("D:\\Git\\TheBattleOfArchers\\Assets\\Assets.xml", application->GetContext());
+
+        auto entity = application->GetContext().registry.create();
+        application->GetContext().registry.emplace<Engine::TextureComponent>(entity, "Test", application->GetContext());
+    }
+
+    void OnDeinit(Engine::Application* application) override
+    {
+    }
+};
 
 int main(int argc, char** argv)
 {
-    InitWindow(800, 450, "raylib [core] example - basic window");
-
-    entt::registry registry;
-
-    Engine::Resources resources;
-    Engine::ResourcesParser::LoadFromXMLFile("D:\\Git\\TheBattleOfArchers\\Assets\\Assets.xml", resources);
-
-    auto entity = registry.create();
-    registry.emplace<Engine::TextureComponent>(entity, "Test", resources);
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        
-        Engine::DrawSystem::Run(registry);
-
-        EndDrawing();
-    }
-
-    CloseWindow();
-
+    Engine::Application app;
+    app.SetDelegate(std::make_unique<ApplicationDelegate>());
+    app.Execute();
 	return 0;
 }

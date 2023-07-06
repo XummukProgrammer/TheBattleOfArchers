@@ -6,7 +6,7 @@
 
 namespace Engine
 {
-    void ResourcesParser::LoadFromXMLFile(std::string_view filePath, Resources& resources)
+    void ResourcesParser::LoadFromXMLFile(std::string_view filePath, Context& context)
     {
         pugi::xml_document doc;
         auto result = doc.load_file(filePath.data());
@@ -30,7 +30,7 @@ namespace Engine
                 if (!resource->IsEmpty())
                 {
                     const std::string id = node.attribute("Id").as_string();
-                    resources.AddResource(id, std::move(resource));
+                    context.resources.AddResource(id, std::move(resource));
                 }
             }
         }

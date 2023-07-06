@@ -1,7 +1,8 @@
 ﻿#ifndef _TINY_ENGINE_HEADER_
 #define _TINY_ENGINE_HEADER_
 
-#include <Engine/Resources/Resources.hpp>
+#include <Engine/Core/Application.hpp>
+
 #include <Engine/Resources/ResourcesParser.hpp>
 #include <Engine/Resources/Types/ResourceTexture.hpp>
 

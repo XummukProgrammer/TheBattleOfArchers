@@ -1,7 +1,7 @@
 ﻿#ifndef _ENGINE_RESOURCES_PARSER_HEADER_
 #define _ENGINE_RESOURCES_PARSER_HEADER_
 
-#include <Engine/Resources/Resources.hpp>
+#include <Engine/Core/Context.hpp>
 
 namespace Engine
 {
@@ -12,7 +12,7 @@ namespace Engine
 		~ResourcesParser() = default;
 
 	public:
-		static void LoadFromXMLFile(std::string_view filePath, Resources& resources);
+		static void LoadFromXMLFile(std::string_view filePath, Context& context);
 	};
 }
 
