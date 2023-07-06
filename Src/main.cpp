@@ -9,7 +9,7 @@ public:
 public:
     void OnInit(Engine::Application* application) override
     {
-        Engine::ResourcesParser::LoadFromXMLFile("D:\\Git\\TheBattleOfArchers\\Assets\\Assets.xml", application->GetContext());
+        Engine::ResourcesParser::LoadFromXMLFile(application->GetContext().fileSystem.BuildPath(Engine::DirType::Assets, "Assets.xml"), application->GetContext());
 
         auto& registry = application->GetContext().scene.GetRegistry();
         auto entity = registry.create();
@@ -25,6 +25,6 @@ int main(int argc, char** argv)
 {
     Engine::Application app;
     app.SetDelegate(std::make_unique<ApplicationDelegate>());
-    app.Execute();
+    app.Execute(argv);
 	return 0;
 }

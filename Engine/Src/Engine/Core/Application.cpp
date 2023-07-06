@@ -4,11 +4,13 @@
 
 namespace Engine
 {
-    void Application::Execute()
+    void Application::Execute(char** argv)
     {
         _context.window.Create(800, 600, "TheBattleOfArchers");
         _context.window.SetOnUpdateCallback(std::bind(&Application::OnUpdate, this));
         _context.window.SetOnDrawCallback(std::bind(&Application::OnDraw, this));
+
+        _context.fileSystem.Init(argv);
 
         OnInit();
 

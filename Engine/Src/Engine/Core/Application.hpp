@@ -27,7 +27,7 @@ namespace Engine
 		~Application() = default;
 
 	public:
-		void Execute();
+		void Execute(char** argv);
 
 	public:
 		void SetDelegate(std::unique_ptr<ApplicationDelegate>&& delegate) { _delegate = std::move(delegate); }

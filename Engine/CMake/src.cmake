@@ -5,6 +5,7 @@ set(ENGINE_HEADERS
 	src/Engine/Core/Application.hpp
 	src/Engine/Core/Context.hpp
 	src/Engine/Core/Window.hpp
+	src/Engine/Core/FileSystem.hpp
 	
 	src/Engine/Resources/IResource.hpp
 	src/Engine/Resources/Resources.hpp
@@ -24,6 +25,7 @@ set(ENGINE_SOURCES
 	src/Engine/Core/Application.cpp
 	src/Engine/Core/Context.cpp
 	src/Engine/Core/Window.cpp
+	src/Engine/Core/FileSystem.cpp
 	
 	src/Engine/Resources/Resources.cpp
 	src/Engine/Resources/ResourcesParser.cpp
