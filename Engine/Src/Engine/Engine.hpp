@@ -5,6 +5,10 @@
 #include <Engine/Resources/ResourcesParser.hpp>
 #include <Engine/Resources/Types/ResourceTexture.hpp>
 
+#include <Engine/ECS/Components/TextureComponent.hpp>
+
+#include <Engine/ECS/Systems/DrawSystem.hpp>
+
 #include "raylib.h"
 
 #endif // _TINY_ENGINE_HEADER_
