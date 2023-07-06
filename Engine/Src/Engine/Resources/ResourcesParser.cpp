@@ -26,7 +26,8 @@ namespace Engine
 
             if (resource)
             {
-                resource->OnLoad(node);
+                const std::string path = context.fileSystem.BuildPath(DirType::Assets, node.attribute("Path").as_string());
+                resource->OnLoad(node, path);
                 if (!resource->IsEmpty())
                 {
                     const std::string id = node.attribute("Id").as_string();

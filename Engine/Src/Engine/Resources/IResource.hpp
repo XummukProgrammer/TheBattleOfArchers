@@ -3,6 +3,8 @@
 
 #include <pugixml.hpp>
 
+#include <string>
+
 namespace Engine
 {
 	class IResource
@@ -12,7 +14,7 @@ namespace Engine
 		virtual ~IResource() = default;
 
 	public:
-		virtual void OnLoad(const pugi::xml_node& node) = 0;
+		virtual void OnLoad(const pugi::xml_node& node, std::string_view path) = 0;
 		virtual void OnUnload() = 0;
 
 		virtual bool IsEmpty() const = 0;

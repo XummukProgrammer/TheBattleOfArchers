@@ -2,10 +2,9 @@
 
 namespace Engine
 {
-    void ResourceTexture::OnLoad(const pugi::xml_node& node)
+    void ResourceTexture::OnLoad(const pugi::xml_node& node, std::string_view path)
     {
-        const std::string path = node.attribute("Path").as_string();
-        _texture = LoadTexture(path.c_str());
+        _texture = LoadTexture(path.data());
     }
 
     void ResourceTexture::OnUnload()

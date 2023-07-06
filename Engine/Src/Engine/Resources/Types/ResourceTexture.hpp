@@ -16,7 +16,7 @@ namespace Engine
 		~ResourceTexture() = default;
 
 	public:
-		void OnLoad(const pugi::xml_node& node) override;
+		void OnLoad(const pugi::xml_node& node, std::string_view path) override;
 		void OnUnload() override;
 
 		bool IsEmpty() const override;
