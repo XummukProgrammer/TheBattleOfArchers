@@ -12,9 +12,13 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/Deps/raylib" "${CMAKE_CURRENT_BINARY_DIR}/Deps/raylib")
+set_target_properties(raylib PROPERTIES FOLDER "Deps")
+
 include(CMake/src.cmake)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/Src" FILES ${ENGINE_HEADERS} ${ENGINE_SOURCES})
 add_library(Engine ${ENGINE_HEADERS} ${ENGINE_SOURCES})
 target_include_directories(Engine PUBLIC Src)
-#target_link_libraries(Engine PUBLIC )
-
+target_link_libraries(Engine PUBLIC 
+	raylib
+)
