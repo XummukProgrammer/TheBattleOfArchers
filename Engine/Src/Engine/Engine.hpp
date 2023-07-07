@@ -7,8 +7,7 @@
 #include <Engine/Resources/Types/ResourceTexture.hpp>
 
 #include <Engine/ECS/Components/TextureComponent.hpp>
-
-#include <Engine/ECS/Systems/DrawSystem.hpp>
+#include <Engine/ECS/Components/TransformComponent.hpp>
 
 #include "raylib.h"
 

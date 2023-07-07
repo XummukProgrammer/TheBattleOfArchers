@@ -15,8 +15,10 @@ set(ENGINE_HEADERS
 	src/Engine/Scene/Scene.hpp
 	
 	src/Engine/ECS/Components/TextureComponent.hpp
+	src/Engine/ECS/Components/TransformComponent.hpp
 	
 	src/Engine/ECS/Systems/DrawSystem.hpp
+	src/Engine/ECS/Systems/IsoDrawSystem.hpp
 )
 
 set(ENGINE_SOURCES
@@ -34,6 +36,8 @@ set(ENGINE_SOURCES
 	src/Engine/Scene/Scene.cpp
 	
 	src/Engine/ECS/Components/TextureComponent.cpp
+	src/Engine/ECS/Components/TransformComponent.cpp
 	
 	src/Engine/ECS/Systems/DrawSystem.cpp
+	src/Engine/ECS/Systems/IsoDrawSystem.cpp
 )

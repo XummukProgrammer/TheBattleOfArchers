@@ -1,12 +1,12 @@
 ﻿#include "Application.hpp"
 
-#include <Engine/ECS/Systems/DrawSystem.hpp>
+#include <Engine/ECS/Systems/IsoDrawSystem.hpp>
 
 namespace Engine
 {
     void Application::Execute(char** argv)
     {
-        _context.window.Create(800, 600, "TheBattleOfArchers");
+        _context.window.Create(1280, 720, "TheBattleOfArchers");
         _context.window.SetOnUpdateCallback(std::bind(&Application::OnUpdate, this));
         _context.window.SetOnDrawCallback(std::bind(&Application::OnDraw, this));
 
@@ -43,6 +43,6 @@ namespace Engine
 
     void Application::OnDraw()
     {
-        DrawSystem::Run(_context);
+        IsoDrawSystem::Run(_context);
     }
 }
