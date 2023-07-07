@@ -19,9 +19,9 @@ public:
         
         int order = 0;
 
-        for (int y = 0; y < 16; ++y)
+        for (int y = 0; y < 100; ++y)
         {
-            for (int x = 0; x < 16; ++x)
+            for (int x = 0; x < 100; ++x)
             {
                 auto entity = registry.create();
                 registry.emplace<Engine::TransformComponent>(entity, Vector2{ static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f }, Vector2{}, order);
@@ -43,6 +43,8 @@ public:
             registry.emplace<Engine::TextureComponent>(entity, "Archer", application->GetContext());
             ++order;
         }
+
+        application->GetContext().scene.RefreshTransforms();
     }
 
     void OnDeinit(Engine::Application* application) override
@@ -75,7 +77,17 @@ public:
 
     void OnMouseWheelMove(Engine::Application* application, float value) override
     {
-        _cameraZoom += 50.f * value * application->GetContext().time.GetDeltaTime();
+        _cameraZoom += value * application->GetContext().time.GetDeltaTime();
+
+        if (_cameraZoom < 0.2f)
+        {
+            _cameraZoom = 0.2f;
+        }
+        else if (_cameraZoom > 0.5f)
+        {
+            _cameraZoom = 0.5f;
+        }
+
         application->GetContext().camera.SetZoom(_cameraZoom);
     }
 

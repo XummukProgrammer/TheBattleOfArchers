@@ -1,6 +1,9 @@
 ﻿#include "Application.hpp"
 
+#include <Engine/ECS/Systems/RefreshTransformsSystem.hpp>
 #include <Engine/ECS/Systems/IsoDrawSystem.hpp>
+
+#include <iostream>
 
 namespace Engine
 {
@@ -18,6 +21,8 @@ namespace Engine
         _context.input.SetOnKeyDownCallback(std::bind(&Application::OnKeyDown, this, std::placeholders::_1));
         _context.input.SetOnKeyReleasedCallback(std::bind(&Application::OnKeyReleased, this, std::placeholders::_1));
         _context.input.SetOnMouseWheelMoveCallback(std::bind(&Application::OnMouseWheelMove, this, std::placeholders::_1));
+
+        SetTargetFPS(1000);
 
         OnInit();
 
@@ -47,6 +52,10 @@ namespace Engine
     void Application::OnUpdate()
     {
         _context.input.CheckEvents();
+
+        RefreshTransformsSystem::Run(_context);
+
+        std::cout << GetFPS() << std::endl;
     }
 
     void Application::OnDraw()

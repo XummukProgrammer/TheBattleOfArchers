@@ -17,7 +17,7 @@ namespace Engine
 		void SetTarget(const Vector2& position);
 		void SetOffset(const Vector2& offset);
 		void SetRotation(float rotation = 0.f);
-		void SetZoom(float zoom = 1.f);
+		void SetZoom(float zoom = 0.5f);
 
 		void BeginMode();
 		void EndMode();

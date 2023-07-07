@@ -8,12 +8,6 @@ namespace Engine
     void IsoDrawSystem::Run(Context& context)
     {
         auto& registry = context.scene.GetRegistry();
-
-        registry.sort<TransformComponent>([](const TransformComponent& left, const TransformComponent& right)
-            {
-                return left.order < right.order;
-            });
-
         auto view = registry.view<const TransformComponent, const TextureComponent>();
         view.each([&context](entt::entity entity, const TransformComponent& transformComponent, const TextureComponent& textureComponent)
             {

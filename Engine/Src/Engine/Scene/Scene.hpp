@@ -15,8 +15,12 @@ namespace Engine
 		entt::registry& GetRegistry() { return _registry; }
 		const entt::registry& GetRegistry() const { return _registry; }
 
+		void RefreshTransforms();
+		void OnTransformsRefreshed();
+
 	private:
 		entt::registry _registry;
+		bool _isTransformsRefreshed = true;
 	};
 }
 
