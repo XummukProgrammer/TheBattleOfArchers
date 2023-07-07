@@ -5,6 +5,7 @@
 #include <Engine/Core/Window.hpp>
 #include <Engine/Scene/Scene.hpp>
 #include <Engine/Core/FileSystem.hpp>
+#include <Engine/Settings/Settings.hpp>
 
 namespace Engine
 {
@@ -14,6 +15,7 @@ namespace Engine
 		FileSystem fileSystem;
 		Window window;
 		Scene scene;
+		Settings settings;
 	};
 }
 

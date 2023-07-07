@@ -19,13 +19,13 @@ namespace Engine
             });
 
         auto view = registry.view<const TransformComponent, const TextureComponent>();
-        view.each([](entt::entity entity, const TransformComponent& transformComponent, const TextureComponent& textureComponent)
+        view.each([&context](entt::entity entity, const TransformComponent& transformComponent, const TextureComponent& textureComponent)
             {
                 if (auto texturePtr = textureComponent.GetTexture())
                 {
                     if (texturePtr)
                     {
-                        Vector2 pos = { 500.f, 100.f };
+                        Vector2 pos = context.settings.isometric.startPosition;
                         pos.x += (transformComponent.positionX - transformComponent.positionY) * 0.5f;
                         pos.y += (transformComponent.positionX + transformComponent.positionY) * 0.5f * 0.5f;
 

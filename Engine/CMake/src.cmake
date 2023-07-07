@@ -7,6 +7,9 @@ set(ENGINE_HEADERS
 	src/Engine/Core/Window.hpp
 	src/Engine/Core/FileSystem.hpp
 	
+	src/Engine/Settings/Settings.hpp
+	src/Engine/Settings/IsoSettings.hpp
+	
 	src/Engine/Resources/IResource.hpp
 	src/Engine/Resources/Resources.hpp
 	src/Engine/Resources/ResourcesParser.hpp
@@ -28,6 +31,9 @@ set(ENGINE_SOURCES
 	src/Engine/Core/Context.cpp
 	src/Engine/Core/Window.cpp
 	src/Engine/Core/FileSystem.cpp
+	
+	src/Engine/Settings/Settings.cpp
+	src/Engine/Settings/IsoSettings.cpp
 	
 	src/Engine/Resources/Resources.cpp
 	src/Engine/Resources/ResourcesParser.cpp

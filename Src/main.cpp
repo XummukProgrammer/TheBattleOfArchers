@@ -13,11 +13,13 @@ public:
     {
         Engine::ResourcesParser::LoadFromXMLFile(application->GetContext().fileSystem.BuildPath(Engine::DirType::Assets, "Assets.xml"), application->GetContext());
 
+        application->GetContext().settings.isometric.startPosition = { 500, 100 };
+
         auto& registry = application->GetContext().scene.GetRegistry();
         
-        for (int y = 0; y < 8; ++y)
+        for (int y = 0; y < 3; ++y)
         {
-            for (int x = 0; x < 8; ++x)
+            for (int x = 0; x < 2; ++x)
             {
                 auto entity = registry.create();
                 registry.emplace<Engine::TransformComponent>(entity, static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f);
