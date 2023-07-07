@@ -33,14 +33,11 @@ namespace Engine
 
         while (!WindowShouldClose())
         {
-            BeginDrawing();
-
             OnUpdate();
 
+            BeginDrawing();
             ClearBackground(RAYWHITE);
-
             OnDraw();
-
             EndDrawing();
         }
     }

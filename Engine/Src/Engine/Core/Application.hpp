@@ -18,6 +18,12 @@ namespace Engine
 	public:
 		virtual void OnInit(Application* application) {}
 		virtual void OnDeinit(Application* application) {}
+
+		virtual void OnKeyPressed(Application* application, int key) {}
+		virtual void OnKeyDown(Application* application, int key) {}
+		virtual void OnKeyReleased(Application* application, int key) {}
+
+		virtual void OnMouseWheelMove(Application* application, float value) {}
 	};
 
 	class Application final
@@ -41,6 +47,12 @@ namespace Engine
 
 		void OnUpdate();
 		void OnDraw();
+
+		void OnKeyPressed(int key);
+		void OnKeyDown(int key);
+		void OnKeyReleased(int key);
+
+		void OnMouseWheelMove(float value);
 
 	private:
 		std::unique_ptr<ApplicationDelegate> _delegate;

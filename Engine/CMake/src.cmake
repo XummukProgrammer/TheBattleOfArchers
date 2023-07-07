@@ -5,6 +5,9 @@ set(ENGINE_HEADERS
 	src/Engine/Core/Application.hpp
 	src/Engine/Core/Context.hpp
 	src/Engine/Core/Window.hpp
+	src/Engine/Core/Camera.hpp
+	src/Engine/Core/Input.hpp
+	src/Engine/Core/Time.hpp
 	src/Engine/Core/FileSystem.hpp
 	
 	src/Engine/Settings/Settings.hpp
@@ -30,6 +33,9 @@ set(ENGINE_SOURCES
 	src/Engine/Core/Application.cpp
 	src/Engine/Core/Context.cpp
 	src/Engine/Core/Window.cpp
+	src/Engine/Core/Camera.cpp
+	src/Engine/Core/Input.cpp
+	src/Engine/Core/Time.cpp
 	src/Engine/Core/FileSystem.cpp
 	
 	src/Engine/Settings/Settings.cpp

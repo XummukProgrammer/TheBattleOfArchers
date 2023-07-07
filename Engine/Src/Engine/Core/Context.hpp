@@ -6,6 +6,9 @@
 #include <Engine/Scene/Scene.hpp>
 #include <Engine/Core/FileSystem.hpp>
 #include <Engine/Settings/Settings.hpp>
+#include <Engine/Core/Camera.hpp>
+#include <Engine/Core/Input.hpp>
+#include <Engine/Core/Time.hpp>
 
 namespace Engine
 {
@@ -16,6 +19,9 @@ namespace Engine
 		Window window;
 		Scene scene;
 		Settings settings;
+		Camera camera;
+		Input input;
+		Time time;
 	};
 }
 

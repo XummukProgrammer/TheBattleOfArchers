@@ -19,9 +19,9 @@ public:
         
         int order = 0;
 
-        for (int y = 0; y < 3; ++y)
+        for (int y = 0; y < 16; ++y)
         {
-            for (int x = 0; x < 2; ++x)
+            for (int x = 0; x < 16; ++x)
             {
                 auto entity = registry.create();
                 registry.emplace<Engine::TransformComponent>(entity, Vector2{ static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f }, Vector2{}, order);
@@ -48,6 +48,40 @@ public:
     void OnDeinit(Engine::Application* application) override
     {
     }
+
+    void OnKeyDown(Engine::Application* application, int key) override
+    {
+        const float deltaTime = application->GetContext().time.GetDeltaTime();
+
+        if (key == KEY_A)
+        {
+            _cameraTarget.x -= 250.f * deltaTime;
+        }
+        else if (key == KEY_D)
+        {
+            _cameraTarget.x += 250.f * deltaTime;
+        }
+        else if (key == KEY_W)
+        {
+            _cameraTarget.y -= 250.f * deltaTime;
+        }
+        else if (key == KEY_S)
+        {
+            _cameraTarget.y += 250.f * deltaTime;
+        }
+
+        application->GetContext().camera.SetTarget(_cameraTarget);
+    }
+
+    void OnMouseWheelMove(Engine::Application* application, float value) override
+    {
+        _cameraZoom += 50.f * value * application->GetContext().time.GetDeltaTime();
+        application->GetContext().camera.SetZoom(_cameraZoom);
+    }
+
+private:
+    Vector2 _cameraTarget;
+    float _cameraZoom = 1.f;
 };
 
 int main(int argc, char** argv)
