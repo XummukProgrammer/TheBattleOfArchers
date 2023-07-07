@@ -1,14 +1,17 @@
 ﻿#ifndef _ENGINE_TRANSFORM_COMPONENT_HEADER_
 #define _ENGINE_TRANSFORM_COMPONENT_HEADER_
 
+#include "raylib.h"
+
 namespace Engine
 {
 	struct TransformComponent
 	{
-		float positionX = 0.f;
-		float positionY = 0.f;
+		Vector2 position;
+		Vector2 offset;
+		int order = 0;
 
-		TransformComponent(float posX, float posY);
+		TransformComponent(const Vector2& position, const Vector2& offset, int order);
 	};
 }
 

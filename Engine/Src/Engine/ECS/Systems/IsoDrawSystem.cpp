@@ -11,11 +11,7 @@ namespace Engine
 
         registry.sort<TransformComponent>([](const TransformComponent& left, const TransformComponent& right)
             {
-                if (left.positionY == right.positionY)
-                {
-                    return left.positionX < right.positionX;
-                }
-                return left.positionY < right.positionY;
+                return left.order < right.order;
             });
 
         auto view = registry.view<const TransformComponent, const TextureComponent>();
@@ -26,8 +22,10 @@ namespace Engine
                     if (texturePtr)
                     {
                         Vector2 pos = context.settings.isometric.startPosition;
-                        pos.x += (transformComponent.positionX - transformComponent.positionY) * 0.5f;
-                        pos.y += (transformComponent.positionX + transformComponent.positionY) * 0.5f * 0.5f;
+                        pos.x += (transformComponent.position.x - transformComponent.position.y) * 0.5f;
+                        pos.y += (transformComponent.position.x + transformComponent.position.y) * 0.5f * 0.5f;
+                        pos.x += transformComponent.offset.x;
+                        pos.y += transformComponent.offset.y;
 
                         DrawTextureEx(texturePtr->GetTexture(), pos, 0.f, 1.f, WHITE);
                     }

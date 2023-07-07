@@ -17,14 +17,31 @@ public:
 
         auto& registry = application->GetContext().scene.GetRegistry();
         
+        int order = 0;
+
         for (int y = 0; y < 3; ++y)
         {
             for (int x = 0; x < 2; ++x)
             {
                 auto entity = registry.create();
-                registry.emplace<Engine::TransformComponent>(entity, static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f);
+                registry.emplace<Engine::TransformComponent>(entity, Vector2{ static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f }, Vector2{}, order);
                 registry.emplace<Engine::TextureComponent>(entity, "IsoTile", application->GetContext());
+                ++order;
             }
+        }
+
+        {
+            auto entity = registry.create();
+            registry.emplace<Engine::TransformComponent>(entity, Vector2{ 0.f, 0.f }, Vector2{ 0, -64.f }, order);
+            registry.emplace<Engine::TextureComponent>(entity, "Archer", application->GetContext());
+            ++order;
+        }
+
+        {
+            auto entity = registry.create();
+            registry.emplace<Engine::TransformComponent>(entity, Vector2{ 128.f * 1, 128.f * 2 }, Vector2{ 0, -64.f}, order);
+            registry.emplace<Engine::TextureComponent>(entity, "Archer", application->GetContext());
+            ++order;
         }
     }
 

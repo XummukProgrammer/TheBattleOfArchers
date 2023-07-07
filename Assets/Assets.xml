@@ -3,4 +3,5 @@
 	<Resource Id="Test" Type="Texture" Path="Textures/raylib_logo.png" />
 	<Resource Id="IsoTile" Type="Texture" Path="Textures/isoTile.png" />
 	<Resource Id="IsoTile2" Type="Texture" Path="Textures/isoTile2.png" />
+	<Resource Id="Archer" Type="Texture" Path="Textures/archer.png" />
 </Resources>
