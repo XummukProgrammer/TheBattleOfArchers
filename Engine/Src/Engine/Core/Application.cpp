@@ -22,6 +22,9 @@ namespace Engine
         _context.input.SetOnKeyReleasedCallback(std::bind(&Application::OnKeyReleased, this, std::placeholders::_1));
         _context.input.SetOnMouseWheelMoveCallback(std::bind(&Application::OnMouseWheelMove, this, std::placeholders::_1));
 
+        _context.systems.AddAndCreateSystem<RefreshTransformsSystem>();
+        _context.systems.AddAndCreateSystem<IsoDrawSystem>();
+
         SetTargetFPS(1000);
 
         OnInit();
@@ -52,16 +55,14 @@ namespace Engine
     void Application::OnUpdate()
     {
         _context.input.CheckEvents();
-
-        RefreshTransformsSystem::Run(_context);
-
+        _context.systems.OnUpdate(&_context);
         std::cout << GetFPS() << std::endl;
     }
 
     void Application::OnDraw()
     {
         _context.camera.BeginMode();
-        IsoDrawSystem::Run(_context);
+        _context.systems.OnDraw(&_context);
         _context.camera.EndMode();
     }
 

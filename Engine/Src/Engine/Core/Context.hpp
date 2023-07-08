@@ -9,6 +9,7 @@
 #include <Engine/Core/Camera.hpp>
 #include <Engine/Core/Input.hpp>
 #include <Engine/Core/Time.hpp>
+#include <Engine/ECS/Systems.hpp>
 
 namespace Engine
 {
@@ -22,6 +23,7 @@ namespace Engine
 		Camera camera;
 		Input input;
 		Time time;
+		Systems systems;
 	};
 }
 

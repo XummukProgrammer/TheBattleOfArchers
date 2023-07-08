@@ -1,18 +1,21 @@
 ﻿#ifndef _ENGINE_ISO_DRAW_SYSTEM_HEADER_
 #define _ENGINE_ISO_DRAW_SYSTEM_HEADER_
 
-#include <Engine/Core/Context.hpp>
+#include <Engine/ECS/System.hpp>
 
 namespace Engine
 {
-	class IsoDrawSystem final
+	class IsoDrawSystem final : public System
 	{
 	public:
-		//IsoDrawSystem() = default;
-		//~IsoDrawSystem() = default;
+		IsoDrawSystem() = default;
+		~IsoDrawSystem() = default;
 
 	public:
-		static void Run(Context& context);
+		void OnRun(Context* context) override;
+
+		SystemType GetType() const override { return SystemType::Draw; }
+		SystemPriority GetPriority() const override { return SystemPriority::VeryLow; }
 	};
 }
 

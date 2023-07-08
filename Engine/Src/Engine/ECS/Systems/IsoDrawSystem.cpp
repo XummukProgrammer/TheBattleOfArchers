@@ -5,17 +5,17 @@
 
 namespace Engine
 {
-    void IsoDrawSystem::Run(Context& context)
+    void IsoDrawSystem::OnRun(Context* context)
     {
-        auto& registry = context.scene.GetRegistry();
+        auto& registry = context->scene.GetRegistry();
         auto view = registry.view<const TransformComponent, const TextureComponent>();
-        view.each([&context](entt::entity entity, const TransformComponent& transformComponent, const TextureComponent& textureComponent)
+        view.each([context](entt::entity entity, const TransformComponent& transformComponent, const TextureComponent& textureComponent)
             {
                 if (auto texturePtr = textureComponent.GetTexture())
                 {
                     if (texturePtr)
                     {
-                        Vector2 pos = context.settings.isometric.startPosition;
+                        Vector2 pos = context->settings.isometric.startPosition;
                         pos.x += (transformComponent.position.x - transformComponent.position.y) * 0.5f;
                         pos.y += (transformComponent.position.x + transformComponent.position.y) * 0.5f * 0.5f;
                         pos.x += transformComponent.offset.x;

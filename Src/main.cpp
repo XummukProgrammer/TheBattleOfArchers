@@ -1,6 +1,6 @@
 ﻿#include <Engine/Engine.hpp>
 
-#include <Engine/ECS/Systems/IsoDrawSystem.hpp>
+#include <Game/ECS/Systems/SpawnArchersSystem.hpp>
 
 class ApplicationDelegate final : public Engine::ApplicationDelegate
 {
@@ -9,13 +9,15 @@ public:
     ~ApplicationDelegate() = default;
 
 public:
-    void OnInit(Engine::Application* application) override
+    void OnInit(Engine::Application* app) override
     {
-        Engine::ResourcesParser::LoadFromXMLFile(application->GetContext().fileSystem.BuildPath(Engine::DirType::Assets, "Assets.xml"), application->GetContext());
+        app->GetContext().systems.AddAndCreateSystem<Game::SpawnArchersSystem>();
 
-        application->GetContext().settings.isometric.startPosition = { 500, 100 };
+        Engine::ResourcesParser::LoadFromXMLFile(app->GetContext().fileSystem.BuildPath(Engine::DirType::Assets, "Assets.xml"), app->GetContext());
 
-        auto& registry = application->GetContext().scene.GetRegistry();
+        app->GetContext().settings.isometric.startPosition = { 500, 100 };
+
+        auto& registry = app->GetContext().scene.GetRegistry();
         
         int order = 0;
 
@@ -25,7 +27,7 @@ public:
             {
                 auto entity = registry.create();
                 registry.emplace<Engine::TransformComponent>(entity, Vector2{ static_cast<float>(x) * 128.f, static_cast<float>(y) * 128.f }, Vector2{}, order);
-                registry.emplace<Engine::TextureComponent>(entity, "IsoTile", application->GetContext());
+                registry.emplace<Engine::TextureComponent>(entity, "IsoTile", app->GetContext());
                 ++order;
             }
         }
@@ -33,27 +35,27 @@ public:
         {
             auto entity = registry.create();
             registry.emplace<Engine::TransformComponent>(entity, Vector2{ 0.f, 0.f }, Vector2{ 0, -64.f }, order);
-            registry.emplace<Engine::TextureComponent>(entity, "Archer", application->GetContext());
+            registry.emplace<Engine::TextureComponent>(entity, "Archer", app->GetContext());
             ++order;
         }
 
         {
             auto entity = registry.create();
             registry.emplace<Engine::TransformComponent>(entity, Vector2{ 128.f * 1, 128.f * 2 }, Vector2{ 0, -64.f}, order);
-            registry.emplace<Engine::TextureComponent>(entity, "Archer", application->GetContext());
+            registry.emplace<Engine::TextureComponent>(entity, "Archer", app->GetContext());
             ++order;
         }
 
-        application->GetContext().scene.RefreshTransforms();
+        app->GetContext().scene.RefreshTransforms();
     }
 
-    void OnDeinit(Engine::Application* application) override
+    void OnDeinit(Engine::Application* app) override
     {
     }
 
-    void OnKeyDown(Engine::Application* application, int key) override
+    void OnKeyDown(Engine::Application* app, int key) override
     {
-        const float deltaTime = application->GetContext().time.GetDeltaTime();
+        const float deltaTime = app->GetContext().time.GetDeltaTime();
 
         if (key == KEY_A)
         {
@@ -72,12 +74,12 @@ public:
             _cameraTarget.y += 250.f * deltaTime;
         }
 
-        application->GetContext().camera.SetTarget(_cameraTarget);
+        app->GetContext().camera.SetTarget(_cameraTarget);
     }
 
-    void OnMouseWheelMove(Engine::Application* application, float value) override
+    void OnMouseWheelMove(Engine::Application* app, float value) override
     {
-        _cameraZoom += value * application->GetContext().time.GetDeltaTime();
+        _cameraZoom += value * app->GetContext().time.GetDeltaTime();
 
         if (_cameraZoom < 0.2f)
         {
@@ -88,7 +90,7 @@ public:
             _cameraZoom = 0.5f;
         }
 
-        application->GetContext().camera.SetZoom(_cameraZoom);
+        app->GetContext().camera.SetZoom(_cameraZoom);
     }
 
 private:

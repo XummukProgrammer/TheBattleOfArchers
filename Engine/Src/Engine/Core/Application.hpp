@@ -16,14 +16,14 @@ namespace Engine
 		virtual ~ApplicationDelegate() = default;
 
 	public:
-		virtual void OnInit(Application* application) {}
-		virtual void OnDeinit(Application* application) {}
+		virtual void OnInit(Application* app) {}
+		virtual void OnDeinit(Application* app) {}
 
-		virtual void OnKeyPressed(Application* application, int key) {}
-		virtual void OnKeyDown(Application* application, int key) {}
-		virtual void OnKeyReleased(Application* application, int key) {}
+		virtual void OnKeyPressed(Application* app, int key) {}
+		virtual void OnKeyDown(Application* app, int key) {}
+		virtual void OnKeyReleased(Application* app, int key) {}
 
-		virtual void OnMouseWheelMove(Application* application, float value) {}
+		virtual void OnMouseWheelMove(Application* app, float value) {}
 	};
 
 	class Application final

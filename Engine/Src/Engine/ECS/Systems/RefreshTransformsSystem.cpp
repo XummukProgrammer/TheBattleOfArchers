@@ -1,16 +1,18 @@
 ﻿#include "RefreshTransformsSystem.hpp"
 
+#include <Engine/Core/Context.hpp>
+
 #include <Engine/ECS/Components/RefreshTransformsComponent.hpp>
 #include <Engine/ECS/Components/TransformComponent.hpp>
 
 namespace Engine
 {
-    void RefreshTransformsSystem::Run(Context& context)
+    void RefreshTransformsSystem::OnRun(Context* context)
     {
-        auto& registry = context.scene.GetRegistry();
+        auto& registry = context->scene.GetRegistry();
 
         auto view = registry.view<const RefreshTransformsComponent>();
-        view.each([&registry, &context](entt::entity entity, const RefreshTransformsComponent&)
+        view.each([&registry, context](entt::entity entity, const RefreshTransformsComponent&)
             {
                 registry.sort<TransformComponent>([](const TransformComponent& left, const TransformComponent& right)
                     {
@@ -18,7 +20,7 @@ namespace Engine
                     });
 
                 registry.destroy(entity);
-                context.scene.OnTransformsRefreshed();
+                context->scene.OnTransformsRefreshed();
             });
     }
 }
